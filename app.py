@@ -132,12 +132,19 @@ def load():
 def fit_gpd(lr):
     out = {}
     for t in lr.columns:
-        losses = -lr[t].dropna().values
-        u = np.quantile(losses, 0.95)
-        exc = losses[losses > u] - u
-        if len(exc) < 10: continue
-        xi, _, sigma = genpareto.fit(exc, floc=0)
-        out[t] = {"xi": xi, "sigma": sigma, "u": u}
+        try:
+            losses = -lr[t].dropna().values
+            losses = losses[~np.isnan(losses)]
+            if len(losses) < 50:
+                continue
+            u = np.quantile(losses, 0.95)
+            exc = losses[losses > u] - u
+            if len(exc) < 10:
+                continue
+            xi, _, sigma = genpareto.fit(exc, floc=0)
+            out[t] = {"xi": xi, "sigma": sigma, "u": u}
+        except Exception:
+            continue
     return out
 
 with st.spinner("Loading live market data..."):
