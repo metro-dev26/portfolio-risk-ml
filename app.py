@@ -151,7 +151,7 @@ with st.spinner("Loading live market data..."):
     prices, lr = load()
     gpd = fit_gpd(lr)
 
-port_r = lr.mean(axis=1)
+port_r = lr.mean(axis=1).dropna()
 
 # ── SIDEBAR ───────────────────────────────────────────────────
 with st.sidebar:
