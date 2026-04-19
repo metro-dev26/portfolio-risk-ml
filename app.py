@@ -364,7 +364,7 @@ elif "Gaussian" in page:
                        barmode="group",height=360,margin=dict(l=20,r=20,t=10,b=20),
                        legend=dict(bgcolor="#111d2e",bordercolor="#1c2d44"),
                        annotations=[dict(x=2,y=max(h_vars)*1.18,
-                           text=f"Gap at 99%: {h_vars[2]-g_vars[2]:.2f}% = Rs.{(h_vars[2]-g_vars[2])/100*1000000:,.0f} per Rs.10 lakh",
+                           text="Gap at 99%: " + str(round(h_vars[2]-g_vars[2],2)) + "%",
                            showarrow=False,font=dict(color="#ff3d5a",size=13),
                            bgcolor="rgba(255,61,90,0.1)",bordercolor="#ff3d5a",
                            borderwidth=1,borderpad=8)])
