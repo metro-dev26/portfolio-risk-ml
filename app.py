@@ -354,21 +354,16 @@ elif "Gaussian" in page:
 
     fig2 = go.Figure()
     fig2.add_trace(go.Bar(name="Historical VaR — the truth",x=["90%","95%","99%"],y=h_vars,
-                          marker_color="#ff3d5a",text=[f"{v:.2f}%" for v in h_vars],
-                          textposition="outside",textfont=dict(color="#dde4f0")))
+                      marker_color="#ff3d5a",text=[f"{v:.2f}%" for v in h_vars],
+                      textposition="outside",textfont=dict(color="#dde4f0")))
     fig2.add_trace(go.Bar(name="Gaussian VaR — what banks use",x=["90%","95%","99%"],y=g_vars,
-                          marker_color="#4d9fff",text=[f"{v:.2f}%" for v in g_vars],
-                          textposition="outside",textfont=dict(color="#dde4f0")))
+                      marker_color="#4d9fff",text=[f"{v:.2f}%" for v in g_vars],
+                      textposition="outside",textfont=dict(color="#dde4f0")))
     fig2.update_layout(**PLOT_THEME,
-                       yaxis=dict(title="Daily VaR (% of portfolio)",gridcolor="#1c2d44"),
-                       barmode="group",height=360,margin=dict(l=20,r=20,t=10,b=20),
-                       legend=dict(bgcolor="#111d2e",bordercolor="#1c2d44"),
-                       annotations=[dict(x=2,y=max(h_vars)*1.18,
-                           text="Gap at 99%: " + str(round(h_vars[2]-g_vars[2],2)) + "%",
-                           showarrow=False,font=dict(color="#ff3d5a",size=13),
-                           bgcolor="rgba(255,61,90,0.1)",bordercolor="#ff3d5a",
-                           borderwidth=1,borderpad=8)])
-    st.plotly_chart(fig2,use_container_width=True)
+                   yaxis=dict(title="Daily VaR (% of portfolio)",gridcolor="#1c2d44"),
+                   barmode="group",height=360,margin=dict(l=20,r=20,t=10,b=20),
+                   legend=dict(bgcolor="#111d2e",bordercolor="#1c2d44"))
+st.plotly_chart(fig2,use_container_width=True)
 
     st.markdown("""
     <div class='story-card danger'>
