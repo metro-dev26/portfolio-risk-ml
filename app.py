@@ -149,9 +149,11 @@ def fit_gpd(lr):
 
 with st.spinner("Loading live market data..."):
     prices, lr = load()
+    lr = lr.dropna()
     gpd = fit_gpd(lr)
 
 port_r = lr.mean(axis=1).dropna()
+port_r = port_r[~np.isnan(port_r)]
 
 # ── SIDEBAR ───────────────────────────────────────────────────
 with st.sidebar:
