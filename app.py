@@ -347,8 +347,10 @@ elif "Gaussian" in page:
     h_vars, g_vars = [], []
     mu, std = port_r.mean(), port_r.std()
     for p in [0.90, 0.95, 0.99]:
-    h_vars.append(abs(np.nanpercentile(port_r, (1-p)*100)) * 100)
-    g_vars.append(abs(mu + std * norm.ppf(1-p)) * 100)
+        h_vars.append(abs(np.nanpercentile(port_r, (1-p)*100)) * 100)
+        g_vars.append(abs(mu + std * norm.ppf(1-p)) * 100)
+        
+    
 
     fig2 = go.Figure()
     fig2.add_trace(go.Bar(name="Historical VaR — the truth",x=["90%","95%","99%"],y=h_vars,
