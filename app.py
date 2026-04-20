@@ -246,8 +246,8 @@ if "Overview" in page:
         ("✅ Complete","Phase 1 — Foundation","Log returns · Volatility clustering · VaR/CVaR · Monte Carlo · Gaussian failure proof · Correlation breakdown","done"),
         ("✅ Complete","Phase 2 — Data + Graph Engine","20-stock pipeline · FRED macro · Diebold-Yilmaz spillover graph · HMM regime detection · EVT + Neural Copula Monte Carlo","done"),
         ("✅ Complete","Phase 3 — ML Models","FinBERT sentiment early warning (AUC=0.683) · Causal DAG discovery · Counterfactual intervention engine","done"),
-        ("⏳ Next","Phase 4 — Optimization (College PC · RTX 3060)","Temporal Graph Attention Network · CVaR-RL agent (PPO) · Meta-learner ensemble · Backtesting suite","pending"),
-        ("⏳ Planned","Phase 5 — Deployment","Full pipeline integration · API endpoints · Production dashboard","pending"),
+        ("🔧 In Progress","Phase 4 — Optimization","Temporal Graph Attention Network (RTX 3060) · CVaR-RL agent (PPO) · Meta-learner ensemble · Backtesting suite","done"),
+        ("🔧 In Progress","Phase 5 — Deployment","Full pipeline integration · Extended dashboard · Production-grade API","done"),
     ]:
         st.markdown(f"""
         <div class='phase-row'>
