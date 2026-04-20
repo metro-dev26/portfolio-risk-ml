@@ -386,7 +386,7 @@ elif "Gaussian" in page:
                    annotation_text="Correlation = 1.0 = zero diversification benefit",
                    annotation_font_color="#ffb347")
     fig3.update_layout(**PLOT_THEME,yaxis=dict(title="Correlation",range=[0,1.15],gridcolor="#1c2d44"),
-                       barmode="group",height=360,margin=dict(l=20,r=20,t=10,b=20),
+                       barmode="group",height=360
                        legend=dict(bgcolor="#111d2e",bordercolor="#1c2d44"))
     st.plotly_chart(fig3,use_container_width=True)
 
@@ -727,7 +727,7 @@ elif "EVT" in page:
                               textposition="outside",textfont=dict(color="#dde4f0",size=11)))
     fig8.update_layout(**PLOT_THEME,
                        yaxis=dict(title=f"Daily VaR (Rs.) on Rs.{PORT_VAL:,.0f} portfolio",gridcolor="#1c2d44"),
-                       barmode="group",height=380,margin=dict(l=20,r=20,t=10,b=20),
+                       barmode="group",height=380
                        legend=dict(bgcolor="#111d2e",bordercolor="#1c2d44"),
                        annotations=[dict(x=1,y=56000,
                            text="Hidden risk = Rs.15,344 per day",
@@ -1010,7 +1010,7 @@ elif "Live" in page:
     fig11.update_layout(**PLOT_THEME,
                         xaxis=dict(title="Daily Portfolio Return (%)",gridcolor="#1c2d44"),
                         yaxis=dict(title="Density",gridcolor="#1c2d44"),
-                        height=400,margin=dict(l=20,r=20,t=10,b=20),
+                        height=400
                         legend=dict(bgcolor="#111d2e",bordercolor="#1c2d44"))
     st.plotly_chart(fig11,use_container_width=True)
 
