@@ -149,11 +149,9 @@ def fit_gpd(lr):
 
 with st.spinner("Loading live market data..."):
     prices, lr = load()
-    lr = lr.dropna()
     gpd = fit_gpd(lr)
 
-port_r = lr.mean(axis=1).dropna()
-port_r = port_r[~np.isnan(port_r)]
+port_r = lr.dropna().mean(axis=1).dropna()
 
 # ── SIDEBAR ───────────────────────────────────────────────────
 with st.sidebar:
@@ -346,24 +344,22 @@ elif "Gaussian" in page:
 
     h_vars, g_vars = [], []
     mu, std = port_r.mean(), port_r.std()
-    for p in [0.90, 0.95, 0.99]:
-        h_vars.append(abs(np.nanpercentile(port_r, (1-p)*100)) * 100)
-        g_vars.append(abs(mu + std * norm.ppf(1-p)) * 100)
-        
-    
+    for p in [0.90,0.95,0.99]:
+        h_vars.append(abs(np.nanpercentile(port_r,(1-p)*100))*100)
+        g_vars.append(abs(mu+std*norm.ppf(1-p))*100)
 
     fig2 = go.Figure()
     fig2.add_trace(go.Bar(name="Historical VaR — the truth",x=["90%","95%","99%"],y=h_vars,
-                      marker_color="#ff3d5a",text=[f"{v:.2f}%" for v in h_vars],
-                      textposition="outside",textfont=dict(color="#dde4f0")))
+                          marker_color="#ff3d5a",text=[f"{v:.2f}%" for v in h_vars],
+                          textposition="outside",textfont=dict(color="#dde4f0")))
     fig2.add_trace(go.Bar(name="Gaussian VaR — what banks use",x=["90%","95%","99%"],y=g_vars,
-                      marker_color="#4d9fff",text=[f"{v:.2f}%" for v in g_vars],
-                      textposition="outside",textfont=dict(color="#dde4f0")))
+                          marker_color="#4d9fff",text=[f"{v:.2f}%" for v in g_vars],
+                          textposition="outside",textfont=dict(color="#dde4f0")))
     fig2.update_layout(**PLOT_THEME,
-                   yaxis=dict(title="Daily VaR (% of portfolio)",gridcolor="#1c2d44"),
-                   barmode="group",height=360,margin=dict(l=20,r=20,t=10,b=20),
-                   legend=dict(bgcolor="#111d2e",bordercolor="#1c2d44"))
-st.plotly_chart(fig2,use_container_width=True)
+                       yaxis=dict(title="Daily VaR (% of portfolio)",gridcolor="#1c2d44"),
+                       barmode="group",height=360,margin=dict(l=20,r=20,t=10,b=20),
+                       legend=dict(bgcolor="#111d2e",bordercolor="#1c2d44"))
+    st.plotly_chart(fig2,use_container_width=True)
 
     st.markdown("""
     <div class='story-card danger'>
