@@ -817,7 +817,7 @@ elif "Sentiment" in page:
     ))
     fig9.update_layout(**PLOT_THEME,
                        xaxis=dict(title="Feature Importance (LightGBM average across 5 folds)",gridcolor="#1c2d44"),
-                       height=360,margin=dict(l=20,r=80,t=10,b=20),showlegend=False)
+                       height=360,showlegend=False)
     st.plotly_chart(fig9,use_container_width=True)
 
     st.markdown("""
