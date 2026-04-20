@@ -356,9 +356,9 @@ elif "Gaussian" in page:
                           marker_color="#4d9fff",text=[f"{v:.2f}%" for v in g_vars],
                           textposition="outside",textfont=dict(color="#dde4f0")))
     fig2.update_layout(**PLOT_THEME,
-                       yaxis=dict(title="Daily VaR (% of portfolio)",gridcolor="#1c2d44"),
-                       barmode="group",height=360,margin=dict(l=20,r=20,t=10,b=20),
-                       legend=dict(bgcolor="#111d2e",bordercolor="#1c2d44"))
+                   yaxis=dict(title="Daily VaR (% of portfolio)",gridcolor="#1c2d44"),
+                   barmode="group",height=360,
+                   legend=dict(bgcolor="#111d2e",bordercolor="#1c2d44"))
     st.plotly_chart(fig2,use_container_width=True)
 
     st.markdown("""
